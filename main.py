@@ -1,20 +1,19 @@
 def main() -> None:
     print("--- Welcome to Bookbot 9000 ---")
-
     while True:
-        print("Type in the path to a text file to analyse its contents")
+        print("Type in the path to a text file to analyze its contents")
         print("Type in 'q' to quit")
         book_path = input("> ").lower()
         if book_path == "q":
             break    
-        analyse_book(book_path)
+        analyze_book(book_path)
 
-def analyse_book(book_path: str) -> None:
+
+def analyze_book(book_path: str) -> None:
     try:
         text = get_book_text(book_path)
         num_words = get_num_words(text)
-        chars_dict = get_num_letters(text)
-    
+        chars_dict = get_num_letters(text) 
         print()
         print(f"--- Begin report of '{book_path}'... ---")
         print(f"{num_words} words found in the document")
@@ -23,13 +22,12 @@ def analyse_book(book_path: str) -> None:
             if char.isalpha():
                 print(f"The '{char}' character was found {chars_dict[char]} times")
         print()
-        print(f"--- End report ---")
+        print("--- End report ---")
         print()
     except Exception as e:
         print()
-        print("Text could not be analised.")
+        print("Text could not be analyzed.")
         print(f"Error message: {e}")
-
 
 
 def get_num_words(text: str) -> int:
